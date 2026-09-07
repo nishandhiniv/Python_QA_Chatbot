@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Q&A Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="chat-container">
+
+        <div class="chat-header">
+            <h1>🐍 Python Q&A Chatbot</h1>
+            <p>Ask me anything about Python</p>
+        </div>
+
+        <div id="chat-box" class="chat-box">
+            <div class="message bot-message">
+                <strong>Bot:</strong> Hello! 👋 Ask me a Python question.
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input
+                type="text"
+                id="question"
+                placeholder="Type your Python question..."
+                autocomplete="off"
+            >
+            <button onclick="sendQuestion()">Send</button>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
