@@ -1,40 +1,1175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Python Q&A Chatbot</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
 </head>
+
 
 <body>
 
-    <div class="chat-container">
 
-        <div class="chat-header">
-            <h1>🐍 Python Q&A Chatbot</h1>
-            <p>Ask me anything about Python</p>
-        </div>
+    <!-- =====================================================
+         Header
+    ====================================================== -->
 
-        <div id="chat-box" class="chat-box">
-            <div class="message bot-message">
-                <strong>Bot:</strong> Hello! 👋 Ask me a Python question.
+    <header class="top-header">
+
+        <div class="header-left">
+
+            <div class="brand-icon">
+                🐍
             </div>
+
+            <div>
+
+                <h1 id="chatbot-name">
+                    Python Q&A Chatbot
+                </h1>
+
+                <div class="online-status">
+
+                    <span class="online-dot"></span>
+
+                    Online • Python Learning Assistant
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="input-area">
+
+        <div class="header-right">
+
+            <span class="welcome-user">
+
+                Welcome,
+                <strong class="logged-in-username">
+                    User
+                </strong>
+
+            </span>
+
+
+            <button
+                id="change-name-button"
+                class="header-button"
+                type="button"
+            >
+                ✏️ Change Name
+            </button>
+
+
+            <button
+                id="logout-button"
+                class="header-button logout-button"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         Main Content
+    ====================================================== -->
+
+    <main class="main-container">
+
+
+        <!-- =================================================
+             Welcome Banner
+        ================================================== -->
+
+        <section class="welcome-banner">
+
+            <div class="welcome-content">
+
+                <span class="welcome-label">
+                    PYTHON LEARNING ASSISTANT
+                </span>
+
+                <h2>
+                    Learn Python.
+                    <span>Ask Questions.</span>
+                </h2>
+
+                <p>
+                    Ask questions about Python programming,
+                    concepts, syntax, libraries, algorithms
+                    and more.
+                </p>
+
+            </div>
+
+
+            <div class="welcome-python">
+
+                <div class="python-symbol">
+                    🐍
+                </div>
+
+                <div class="python-code">
+
+                    &gt;&gt;&gt; learn_python()<br>
+                    &gt;&gt;&gt; ask_question()<br>
+                    &gt;&gt;&gt; get_answer()
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             Chatbot Section
+        ================================================== -->
+
+        <section class="chat-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        CONVERSATION
+                    </span>
+
+                    <h2>
+                        Ask your question
+                    </h2>
+
+                </div>
+
+                <div class="chat-info">
+                    🧠 TF-IDF + Cosine Similarity
+                </div>
+
+            </div>
+
+
+            <!-- Chat Card -->
+
+            <div class="chat-card">
+
+
+                <!-- Chat Messages -->
+
+                <div
+                    id="chat-messages"
+                    class="chat-messages"
+                >
+
+                    <!-- Messages are added by script.js -->
+
+                </div>
+
+
+
+                <!-- Input Area -->
+
+                <div class="chat-input-area">
+
+                    <div class="input-container">
+
+                        <input
+                            type="text"
+                            id="question"
+                            placeholder="Ask a Python question..."
+                            autocomplete="off"
+                        >
+
+                        <button
+                            id="send-button"
+                            type="button"
+                        >
+
+                            <span>
+                                Send
+                            </span>
+
+                            <span>
+                                ➤
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+                    <p class="input-hint">
+
+                        💡 Tip: Ask questions such as
+                        "What is a list?" or
+                        "What is inheritance?"
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             Suggested Questions
+        ================================================== -->
+
+        <section class="content-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        QUICK START
+                    </span>
+
+                    <h2>
+                        Suggested Questions
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="suggested-grid">
+
+
+                <button
+                    class="suggested-question"
+                    type="button"
+                >
+                    What is Python?
+                </button>
+
+
+                <button
+                    class="suggested-question"
+                    type="button"
+                >
+                    What is a variable?
+                </button>
+
+
+                <button
+                    class="suggested-question"
+                    type="button"
+                >
+                    What is a function?
+                </button>
+
+
+                <button
+                    class="suggested-question"
+                    type="button"
+                >
+                    What is a list?
+                </button>
+
+
+                <button
+                    class="suggested-question"
+                    type="button"
+                >
+                    What is inheritance?
+                </button>
+
+
+                <button
+                    class="suggested-question"
+                    type="button"
+                >
+                    What is machine learning?
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             Topics
+        ================================================== -->
+
+        <section class="content-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        EXPLORE
+                    </span>
+
+                    <h2>
+                        Python Topics
+                    </h2>
+
+                </div>
+
+                <p class="section-description">
+                    Click a topic to explore a question.
+                </p>
+
+            </div>
+
+
+            <div class="topic-grid">
+
+
+                <!-- Python Basics -->
+
+                <button
+                    class="topic-card"
+                    data-topic="Python Basics"
+                    type="button"
+                >
+
+                    <div class="topic-icon">
+                        🐍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Python Basics
+                        </h3>
+
+                        <p>
+                            Variables, data types and syntax
+                        </p>
+
+                    </div>
+
+                    <span class="topic-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <!-- Operators -->
+
+                <button
+                    class="topic-card"
+                    data-topic="Operators"
+                    type="button"
+                >
+
+                    <div class="topic-icon">
+                        ➗
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Operators
+                        </h3>
+
+                        <p>
+                            Arithmetic, logical and comparison
+                        </p>
+
+                    </div>
+
+                    <span class="topic-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <!-- Conditions -->
+
+                <button
+                    class="topic-card"
+                    data-topic="Conditions"
+                    type="button"
+                >
+
+                    <div class="topic-icon">
+                        🔀
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Conditions
+                        </h3>
+
+                        <p>
+                            If, else and conditional statements
+                        </p>
+
+                    </div>
+
+                    <span class="topic-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <!-- Loops -->
+
+                <button
+                    class="topic-card"
+                    data-topic="Loops"
+                    type="button"
+                >
+
+                    <div class="topic-icon">
+                        🔁
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Loops
+                        </h3>
+
+                        <p>
+                            For, while, break and continue
+                        </p>
+
+                    </div>
+
+                    <span class="topic-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <!-- Lists -->
+
+                <button
+                    class="topic-card"
+                    data-topic="Lists & Collections"
+                    type="button"
+                >
+
+                    <div class="topic-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Lists & Collections
+                        </h3>
+
+                        <p>
+                            Lists, tuples, sets and dictionaries
+                        </p>
+
+                    </div>
+
+                    <span class="topic-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <!-- Functions -->
+
+                <button
+                    class="topic-card"
+                    data-topic="Functions"
+                    type="button"
+                >
+
+                    <div class="topic-icon">
+                        ⚙️
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Functions
+                        </h3>
+
+                        <p>
+                            Functions, arguments and lambda
+                        </p>
+
+                    </div>
+
+                    <span class="topic-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <!-- OOP -->
+
+                <button
+                    class="topic-card"
+                    data-topic="OOP"
+                    type="button"
+                >
+
+                    <div class="topic-icon">
+                        🧩
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Object Oriented Programming
+                        </h3>
+
+                        <p>
+                            Classes, objects and inheritance
+                        </p>
+
+                    </div>
+
+                    <span class="topic-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <!-- Machine Learning -->
+
+                <button
+                    class="topic-card"
+                    data-topic="Machine Learning"
+                    type="button"
+                >
+
+                    <div class="topic-icon">
+                        🤖
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Machine Learning
+                        </h3>
+
+                        <p>
+                            NumPy, Pandas and ML basics
+                        </p>
+
+                    </div>
+
+                    <span class="topic-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             Technology Section
+        ================================================== -->
+
+        <section class="info-grid">
+
+
+            <div class="info-card">
+
+                <div class="info-card-icon">
+                    🧠
+                </div>
+
+                <div>
+
+                    <span class="info-label">
+                        NLP METHOD
+                    </span>
+
+                    <h3>
+                        TF-IDF
+                    </h3>
+
+                    <p>
+                        The chatbot converts questions into
+                        numerical vectors using TF-IDF and
+                        compares them with the Python
+                        knowledge base.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="info-card">
+
+                <div class="info-card-icon">
+                    📐
+                </div>
+
+                <div>
+
+                    <span class="info-label">
+                        SIMILARITY
+                    </span>
+
+                    <h3>
+                        Cosine Similarity
+                    </h3>
+
+                    <p>
+                        Similarity scores help the chatbot
+                        identify the most relevant answer
+                        for a user's Python question.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="info-card">
+
+                <div class="info-card-icon">
+                    🗂️
+                </div>
+
+                <div>
+
+                    <span class="info-label">
+                        KNOWLEDGE BASE
+                    </span>
+
+                    <h3>
+                        Python Q&A
+                    </h3>
+
+                    <p>
+                        The system uses a curated Python
+                        question-and-answer knowledge base.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             Highlights
+        ================================================== -->
+
+        <section class="highlights-section">
+
+            <div class="highlight">
+
+                <span class="highlight-number">
+                    01
+                </span>
+
+                <div>
+
+                    <h3>
+                        Python Focused
+                    </h3>
+
+                    <p>
+                        Designed specifically for
+                        Python programming questions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <span class="highlight-number">
+                    02
+                </span>
+
+                <div>
+
+                    <h3>
+                        Fast Responses
+                    </h3>
+
+                    <p>
+                        TF-IDF based matching provides
+                        quick answers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <span class="highlight-number">
+                    03
+                </span>
+
+                <div>
+
+                    <h3>
+                        Easy to Learn
+                    </h3>
+
+                    <p>
+                        Simple interface for students
+                        learning Python.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             About
+        ================================================== -->
+
+        <section class="about-section">
+
+            <div class="about-icon">
+                🐍
+            </div>
+
+            <div>
+
+                <span class="section-label">
+                    ABOUT THE PROJECT
+                </span>
+
+                <h2>
+                    Python Q&A Chatbot
+                </h2>
+
+                <p>
+                    This project is an educational Python
+                    question-and-answer chatbot developed
+                    using Flask, Python and Natural Language
+                    Processing techniques. It uses TF-IDF
+                    vectorization and Cosine Similarity to
+                    find relevant answers from a predefined
+                    Python knowledge base.
+                </p>
+
+                <p>
+                    The chatbot is designed to answer
+                    Python-related questions rather than
+                    acting as a general-purpose AI chatbot.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         Footer
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div>
+
+            <strong>
+                Python Q&A Chatbot
+            </strong>
+
+            <span>
+                • Educational Project
+            </span>
+
+        </div>
+
+        <div>
+            Built with Python + Flask
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         Chatbot Name Modal
+    ====================================================== -->
+
+    <div
+        id="name-modal"
+        class="modal-overlay"
+        style="display: none;"
+    >
+
+        <div class="name-modal">
+
+            <div class="name-modal-icon">
+                🐍
+            </div>
+
+            <span class="section-label">
+                PERSONALIZE YOUR ASSISTANT
+            </span>
+
+            <h2>
+                What would you like to name your chatbot? 😊
+            </h2>
+
+            <p>
+                Choose a name for your Python learning
+                assistant. You can change it anytime.
+            </p>
+
+
             <input
                 type="text"
-                id="question"
-                placeholder="Type your Python question..."
+                id="chatbot-name-input"
+                placeholder="Example: PyBuddy"
+                maxlength="30"
                 autocomplete="off"
             >
-            <button onclick="sendQuestion()">Send</button>
+
+
+            <div
+                id="name-error"
+                class="name-error"
+            ></div>
+
+
+            <div class="name-modal-actions">
+
+                <button
+                    id="save-name-button"
+                    type="button"
+                    class="primary-modal-button"
+                >
+                    Save Chatbot Name
+                </button>
+
+            </div>
+
         </div>
 
     </div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+    <!-- =====================================================
+         Chatbot Name JavaScript
+    ====================================================== -->
+
+    <script>
+
+        // -----------------------------------------------------
+        // Elements
+        // -----------------------------------------------------
+
+        const chatbotNameElement =
+            document.getElementById(
+                "chatbot-name"
+            );
+
+        const nameModal =
+            document.getElementById(
+                "name-modal"
+            );
+
+        const chatbotNameInput =
+            document.getElementById(
+                "chatbot-name-input"
+            );
+
+        const saveNameButton =
+            document.getElementById(
+                "save-name-button"
+            );
+
+        const changeNameButton =
+            document.getElementById(
+                "change-name-button"
+            );
+
+        const nameError =
+            document.getElementById(
+                "name-error"
+            );
+
+
+        // -----------------------------------------------------
+        // Default name
+        // -----------------------------------------------------
+
+        const defaultChatbotName =
+            "Python Q&A Chatbot";
+
+
+        // -----------------------------------------------------
+        // Open Name Modal
+        // -----------------------------------------------------
+
+        function openNameModal() {
+
+            if (!nameModal) {
+                return;
+            }
+
+
+            nameModal.style.display =
+                "flex";
+
+
+            nameError.textContent =
+                "";
+
+
+            setTimeout(
+                function () {
+
+                    chatbotNameInput.focus();
+
+                },
+                100
+            );
+        }
+
+
+        // -----------------------------------------------------
+        // Close Name Modal
+        // -----------------------------------------------------
+
+        function closeNameModal() {
+
+            if (!nameModal) {
+                return;
+            }
+
+
+            nameModal.style.display =
+                "none";
+        }
+
+
+        // -----------------------------------------------------
+        // Update Chatbot Name
+        // -----------------------------------------------------
+
+        function updateChatbotName(name) {
+
+            const cleanName =
+                name.trim();
+
+
+            if (!cleanName) {
+                return;
+            }
+
+
+            localStorage.setItem(
+                "chatbotName",
+                cleanName
+            );
+
+
+            chatbotNameElement.textContent =
+                cleanName;
+
+
+            document.title =
+                cleanName + " | Python Q&A Chatbot";
+        }
+
+
+        // -----------------------------------------------------
+        // Load Chatbot Name
+        // -----------------------------------------------------
+
+        function loadChatbotName() {
+
+            const savedName =
+                localStorage.getItem(
+                    "chatbotName"
+                );
+
+
+            if (savedName) {
+
+                updateChatbotName(
+                    savedName
+                );
+
+                return;
+            }
+
+
+            chatbotNameElement.textContent =
+                defaultChatbotName;
+
+
+            openNameModal();
+        }
+
+
+        // -----------------------------------------------------
+        // Save Name
+        // -----------------------------------------------------
+
+        saveNameButton.addEventListener(
+            "click",
+            function () {
+
+                const name =
+                    chatbotNameInput.value.trim();
+
+
+                if (!name) {
+
+                    nameError.textContent =
+                        "Please enter a chatbot name.";
+
+                    chatbotNameInput.focus();
+
+                    return;
+                }
+
+
+                if (name.length < 2) {
+
+                    nameError.textContent =
+                        "Chatbot name must contain at least 2 characters.";
+
+                    chatbotNameInput.focus();
+
+                    return;
+                }
+
+
+                updateChatbotName(
+                    name
+                );
+
+
+                closeNameModal();
+
+            }
+        );
+
+
+        // -----------------------------------------------------
+        // Change Name
+        // -----------------------------------------------------
+
+        changeNameButton.addEventListener(
+            "click",
+            function () {
+
+                const currentName =
+                    localStorage.getItem(
+                        "chatbotName"
+                    );
+
+
+                chatbotNameInput.value =
+                    currentName || "";
+
+
+                openNameModal();
+
+            }
+        );
+
+
+        // -----------------------------------------------------
+        // Enter Key
+        // -----------------------------------------------------
+
+        chatbotNameInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    event.preventDefault();
+
+                    saveNameButton.click();
+
+                }
+
+            }
+        );
+
+
+        // -----------------------------------------------------
+        // Initialize
+        // -----------------------------------------------------
+
+        loadChatbotName();
+
+    </script>
+
+
+
+    <!-- Main JavaScript -->
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+
 
 </body>
+
 </html>
